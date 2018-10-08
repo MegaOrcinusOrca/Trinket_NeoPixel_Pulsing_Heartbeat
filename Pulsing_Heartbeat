@@ -1,0 +1,177 @@
+// Create an instance of the Adafruit_NeoPixel class called "leds".
+// That'll be what we refer to from here on...
+#include <Adafruit_NeoPixel.h>
+#define PIN 4
+#define LED_COUNT 1
+
+//Adafruit_NeoPixel leds = Adafruit_NeoPixel(LED_COUNT, PIN, NEO_GRB + NEO_iHZ800);
+Adafruit_NeoPixel leds = Adafruit_NeoPixel(LED_COUNT, PIN, NEO_GRB + NEO_KHZ800);
+
+void setup()
+{
+ leds.begin();  // Start up the LED strip
+ leds.setPixelColor(0, 100, 0, 0); // Set the first pixel to RED
+ leds.setBrightness(50);
+ leds.show();   // LEDs don't actually update until you call this function
+ delay(300);
+}
+long x = random(0,255);
+//int a,b,c,d;
+void loop() {
+ // put your main code here, to run repeatedly:
+ // pulse(); plug in any colors you want. Assuming 1 led
+ pulse(0,128,0,30);
+ pulse(0,189,0,38);
+ pulse(0,227,26,28);
+ pulse(0,255,30,0);
+ pulse(0,255,0,0);
+
+ pulse(0,255,30,0);
+ pulse(0,227,26,28);
+ pulse(0,189,0,38);
+
+}
+// based on a real EKG signal, mess around with values for more variation
+int pulse(int a,int b,int c,int d) {  //void pulse(w,x,y,z)() {
+ uint16_t i = 50;
+ leds.setBrightness(30);
+ leds.show();   // LEDs don't actually update until you call this function
+  leds.setPixelColor(0, 100, 0, 0);
+  x = random(10,30);
+//  leds.setBrightness(x);
+//  leds.show(); //Display the colors
+  delay(100);
+  for (i = x; i < 200; i++) { // P rising
+     leds.show(); //Display the colors
+     leds.setBrightness(i);
+     leds.setPixelColor(a,b,c,d);
+     leds.show(); //Display the colors
+     i += 1;
+     delay(1);    
+    }
+ //    leds.setPixelColor(0, 100, 0, 0);
+  x = random(200,255);
+ // leds.setBrightness(x);
+ // leds.show(); //Display the colors
+ // delay(100);
+  for (i = x; i > 75; i--) { // P falling
+     leds.show(); //Display the colors
+     leds.setBrightness(i);
+     leds.setPixelColor(a,b,c,d);
+     leds.show(); //Display the colors
+     i -= 1;
+     delay(1);   
+    }
+//     leds.setPixelColor(0, 100, 0, 0);
+  x = random(50,100);
+//  leds.setBrightness(x);
+//  leds.show(); //Display the colors
+  delay(100);                             // pause
+  for (i = x; i > 30; i--) { // Q falling
+     leds.show(); //Display the colors
+     leds.setBrightness(i);
+     leds.setPixelColor(a,b,c,d);
+     leds.show(); //Display the colors
+     i -= 1;
+     delay(1);    
+    }
+     leds.setPixelColor(0, 100, 0, 0);
+  x = random(0,30);
+ // leds.setBrightness(x);
+ // leds.show(); //Display the colors
+ // delay(100);
+  for (i = 50; i < 255; i++) { // R rising
+     leds.show(); //Display the colors
+     leds.setBrightness(i);
+     leds.setPixelColor(a,b,c,d);
+     leds.show(); //Display the colors
+     i += 1;
+     delay(1);   // maybe reduce delay
+    }
+     leds.setPixelColor(a,b,c,d);
+  x = random(225,255);
+//  leds.setBrightness(x);
+//  leds.show(); //Display the colors
+  delay(100);
+   for (i = x; i > 30; i--) { // R falling
+     leds.show(); //Display the colors
+     leds.setBrightness(i);
+     leds.setPixelColor(a,b,c,d);
+     leds.show(); //Display the colors
+     i -= 1;
+     delay(1);
+   }
+    leds.setPixelColor(a,b,c,d);
+  x = random(30,40);
+//  leds.setBrightness(x);
+//  leds.show(); //Display the colors
+  delay(100);
+  for (i = x; i < 30; i++) { // S rising
+     leds.show(); //Display the colors
+     leds.setBrightness(i);
+     leds.setPixelColor(a,b,c,d);
+     leds.show(); //Display the colors
+     delay(1);   // maybe reduce delay
+    }
+  delay(10);
+  x = random(10,30);
+  leds.setBrightness(x);
+  leds.show(); //Display the colo
+delay(100); 
+}
+/*
+  leds.setPixelColor(0, 100, 0, 0);
+  x = random(0,75);
+  leds.setBrightness(x);
+  leds.show(); //Display the colors
+  delay(10);
+  x = random(0,75);
+  leds.setBrightness(x);
+  leds.show(); //Display the colors
+  delay(10);
+ x = random(0,75);
+  leds.setBrightness(x);
+  leds.show(); //Display the colors
+  delay(10);
+ x = random(0,75);
+  leds.setBrightness(x);
+  leds.show(); //Display the colors
+  delay(10);
+ x = random(0,75);
+  leds.setBrightness(x);
+  leds.show(); //Display the colors
+  delay(10);
+/*  
+for (i = 75; i < 100; i++) { // T rising
+     leds.show(); //Display the colors
+     leds.setBrightness(i);
+     leds.setPixelColor(0, 0, 100, 0);
+     leds.show(); //Display the colors
+     i -= 5;
+     delay(1);   // maybe reduce delay
+    }
+for (i = 100; i > 75; i--) { // T falling
+     leds.show(); //Display the colors
+     leds.setBrightness(i);
+     leds.setPixelColor(0, 0, 100, 0);
+     leds.show(); //Display the colors
+     i += 5;
+     delay(1);
+   }
+  delay(30);
+for (i = 75; i < 100; i++) { // U rising
+     leds.show(); //Display the colors
+     leds.setBrightness(i);
+     leds.setPixelColor(0, 0, 100, 0);
+     leds.show(); //Display the colors
+   //  l -= 5;
+     delay(1);   // maybe reduce delay
+    }
+for (i = 100; i > 75; i--) { // U falling
+     leds.show(); //Display the colors
+     leds.setBrightness(i);
+     leds.setPixelColor(0, 0, 100, 0);
+     leds.show(); //Display the colors
+ //    i += 5;
+     delay(1);
+   }*/
