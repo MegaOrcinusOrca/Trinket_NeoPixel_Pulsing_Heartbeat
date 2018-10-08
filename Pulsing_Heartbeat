@@ -34,9 +34,9 @@ void loop() {
 // based on a real EKG signal, mess around with values for more variation
 int pulse(int a,int b,int c,int d) {  //void pulse(w,x,y,z)() {
  uint16_t i = 50;
- leds.setBrightness(30);
- leds.show();   // LEDs don't actually update until you call this function
-  leds.setPixelColor(0, 100, 0, 0);
+// leds.setBrightness(30);
+// leds.show();   // LEDs don't actually update until you call this function
+//  leds.setPixelColor(0, 100, 0, 0);
   x = random(10,30);
 //  leds.setBrightness(x);
 //  leds.show(); //Display the colors
@@ -46,7 +46,7 @@ int pulse(int a,int b,int c,int d) {  //void pulse(w,x,y,z)() {
      leds.setBrightness(i);
      leds.setPixelColor(a,b,c,d);
      leds.show(); //Display the colors
-     i += 1;
+     i += 2;
      delay(1);    
     }
  //    leds.setPixelColor(0, 100, 0, 0);
@@ -59,7 +59,7 @@ int pulse(int a,int b,int c,int d) {  //void pulse(w,x,y,z)() {
      leds.setBrightness(i);
      leds.setPixelColor(a,b,c,d);
      leds.show(); //Display the colors
-     i -= 1;
+     i -= 2;
      delay(1);   
     }
 //     leds.setPixelColor(0, 100, 0, 0);
@@ -67,12 +67,12 @@ int pulse(int a,int b,int c,int d) {  //void pulse(w,x,y,z)() {
 //  leds.setBrightness(x);
 //  leds.show(); //Display the colors
   delay(100);                             // pause
-  for (i = x; i > 30; i--) { // Q falling
+  for (i = x; i > 10; i--) { // Q falling
      leds.show(); //Display the colors
      leds.setBrightness(i);
      leds.setPixelColor(a,b,c,d);
      leds.show(); //Display the colors
-     i -= 1;
+     i -= 2;
      delay(1);    
     }
      leds.setPixelColor(0, 100, 0, 0);
@@ -80,12 +80,12 @@ int pulse(int a,int b,int c,int d) {  //void pulse(w,x,y,z)() {
  // leds.setBrightness(x);
  // leds.show(); //Display the colors
  // delay(100);
-  for (i = 50; i < 255; i++) { // R rising
+  for (i = x; i < 255; i++) { // R rising
      leds.show(); //Display the colors
      leds.setBrightness(i);
      leds.setPixelColor(a,b,c,d);
      leds.show(); //Display the colors
-     i += 1;
+     i += 2;
      delay(1);   // maybe reduce delay
     }
      leds.setPixelColor(a,b,c,d);
@@ -98,7 +98,7 @@ int pulse(int a,int b,int c,int d) {  //void pulse(w,x,y,z)() {
      leds.setBrightness(i);
      leds.setPixelColor(a,b,c,d);
      leds.show(); //Display the colors
-     i -= 1;
+     i -= 2;
      delay(1);
    }
     leds.setPixelColor(a,b,c,d);
@@ -119,6 +119,7 @@ int pulse(int a,int b,int c,int d) {  //void pulse(w,x,y,z)() {
   leds.show(); //Display the colo
 delay(100); 
 }
+// the rest of the beat. Not visible normally and signs of unhealthy heartbeat. Inculde to mae unhealthy heart.
 /*
   leds.setPixelColor(0, 100, 0, 0);
   x = random(0,75);
